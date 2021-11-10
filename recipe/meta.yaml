@@ -1,5 +1,5 @@
 {% set name = "metomi-rose" %}
-{% set version = "2.0b2" %}
+{% set version = "2.0b3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: fc03758377303a2ac5c8c1828208a6283d638d24dc860d82fa598e8f9e8dfcf6
+  sha256: 40b4f4c49a5cfe03e3ffe95abaa41d33645bc396d83e9d5875aa29c27fde48d2
 
 build:
   number: 0
   skip: true  # [py<37 or not unix]
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
@@ -44,7 +44,7 @@ about:
   license: GPL-3.0-only
   license_family: GPL
   license_file: COPYING
-  summary: 'A toolkit for writing, editing and running application configurations.'
+  summary: A toolkit for writing, editing and running application configurations.
   doc_url: http://metomi.github.io/rose
   dev_url: https://github.com/metomi/rose
 
