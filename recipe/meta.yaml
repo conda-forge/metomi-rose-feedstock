@@ -1,5 +1,5 @@
 {% set name = "metomi-rose" %}
-{% set version = "2.0b2" %}
+{% set version = "2.0b3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,29 +7,18 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: fc03758377303a2ac5c8c1828208a6283d638d24dc860d82fa598e8f9e8dfcf6
+  sha256: 40b4f4c49a5cfe03e3ffe95abaa41d33645bc396d83e9d5875aa29c27fde48d2
 
 build:
   number: 1
   skip: true  # [py<37 or not unix]
-  script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
-  build:
-    - {{ compiler('c') }}
   host:
-    - python
     - pip
+    - python
   run:
     - python
-    - aiofiles
-    - jinja2 >=2.10.1
-    - ldap3
-    - metomi-isodatetime
-    - requests
-    - sqlalchemy
-    - tornado
-    - psutil >=5.6.0
 
 test:
   imports:
@@ -38,13 +27,48 @@ test:
   commands:
     - rose --version
     - PAGER=cat rose macro --help
+    - rose resource syntax/rose-conf.vim  # test packaging of non-python files
+
+outputs:
+  # base package with only required dependencies
+  - name: {{ name }}-base
+    build:
+      script: python -m pip install . --no-deps --ignore-installed -vv
+    requirements:
+      host:
+        - pip
+        - python
+      run:
+        - aiofiles
+        - jinja2 >=2.10.1
+        - ldap3
+        - metomi-isodatetime
+        - psutil >=5.6.0
+        - python
+        - requests
+        - sqlalchemy
+        # - tornado (rosie disco is temporally disabled)
+
+  # "recommended" package
+  # NOTE: currently the same as base
+  # For the next release we should spin `rosa` and `rosie disco` out of this
+  - name: {{ name }}
+    build:
+      script: python -m pip install . --no-deps --ignore-installed -vv
+    requirements:
+      host:
+        - pip
+        - python
+      run:
+        - python
+        - {{ pin_subpackage(name + "-base", exact=True) }}
 
 about:
   home: https://github.com/metomi/rose
   license: GPL-3.0-only
   license_family: GPL
   license_file: COPYING
-  summary: 'A toolkit for writing, editing and running application configurations.'
+  summary: A toolkit for writing, editing and running application configurations.
   doc_url: http://metomi.github.io/rose
   dev_url: https://github.com/metomi/rose
 

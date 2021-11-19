@@ -100,6 +100,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-metomi--rose-green.svg)](https://anaconda.org/conda-forge/metomi-rose) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/metomi-rose.svg)](https://anaconda.org/conda-forge/metomi-rose) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/metomi-rose.svg)](https://anaconda.org/conda-forge/metomi-rose) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/metomi-rose.svg)](https://anaconda.org/conda-forge/metomi-rose) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-metomi--rose--base-green.svg)](https://anaconda.org/conda-forge/metomi-rose-base) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/metomi-rose-base.svg)](https://anaconda.org/conda-forge/metomi-rose-base) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/metomi-rose-base.svg)](https://anaconda.org/conda-forge/metomi-rose-base) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/metomi-rose-base.svg)](https://anaconda.org/conda-forge/metomi-rose-base) |
 
 Installing metomi-rose
 ======================
@@ -111,10 +112,10 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `metomi-rose` can be installed with:
+Once the `conda-forge` channel has been enabled, `metomi-rose, metomi-rose-base` can be installed with:
 
 ```
-conda install metomi-rose
+conda install metomi-rose metomi-rose-base
 ```
 
 It is possible to list all of the versions of `metomi-rose` available on your platform with:
