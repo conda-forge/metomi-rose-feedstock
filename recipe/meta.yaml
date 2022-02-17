@@ -11,14 +11,16 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<37 or not unix]
+  noarch: python
 
 requirements:
   host:
+    - __unix
     - pip
-    - python
+    - python >=3.7
   run:
-    - python
+    - __unix
+    - python >=3.7
 
 test:
   imports:
@@ -34,11 +36,15 @@ outputs:
   - name: {{ name }}-base
     build:
       script: python -m pip install . --no-deps --ignore-installed -vv
+      noarch: python
     requirements:
       host:
+        - __unix
         - pip
-        - python
+        - python >=3.7
       run:
+        - __unix
+        - python >=3.7
         - aiofiles
         - jinja2 >=2.10.1
         - ldap3
@@ -56,12 +62,15 @@ outputs:
   - name: {{ name }}
     build:
       script: python -m pip install . --no-deps --ignore-installed -vv
+      noarch: python
     requirements:
       host:
+        - __unix
         - pip
-        - python
+        - python >=3.7
       run:
-        - python
+        - __unix
+        - python >=3.7
         - {{ pin_subpackage(name + "-base", exact=True) }}
 
 about:
