@@ -27,7 +27,7 @@ test:
   commands:
     - rose --version
     - PAGER=cat rose macro --help
-    - rose resource syntax/rose-conf.vim  # test packaging of non-python files
+    - rose resource syntax/rose-conf.lang  # test packaging of non-python files
 
 outputs:
   # base package with only required dependencies
@@ -47,6 +47,7 @@ outputs:
         - python
         - requests
         - sqlalchemy
+        - setuptools
         # - tornado (rosie disco is temporally disabled)
 
   # "recommended" package
