@@ -22,15 +22,6 @@ requirements:
     - __unix
     - python >=3.7
 
-test:
-  imports:
-    - metomi.rose
-    - metomi.rose.macro
-  commands:
-    - rose --version
-    - PAGER=cat rose macro --help
-    - rose resource syntax/rose-conf.lang  # test packaging of non-python files
-
 outputs:
   # base package with only required dependencies
   - name: {{ name }}-base
@@ -55,13 +46,21 @@ outputs:
         - sqlalchemy
         - setuptools
         # - tornado (rosie disco is temporally disabled)
+    test:
+      imports:
+        - metomi.rose
+        - metomi.rose.macro
+      commands:
+        - rose --version
+        - PAGER=cat rose macro --help
+        # test packaging of non-python files
+        - rose resource syntax/rose-conf.lang
 
   # "recommended" package
-  # NOTE: currently the same as base
   # For the next release we should spin `rosa` and `rosie disco` out of this
   - name: {{ name }}
     build:
-      script: python -m pip install . --no-deps --ignore-installed -vv
+      script: python -m pip install .[graph] --no-deps --ignore-installed -vv
       noarch: python
     requirements:
       host:
@@ -72,6 +71,17 @@ outputs:
         - __unix
         - python >=3.7
         - {{ pin_subpackage(name + "-base", exact=True) }}
+        - pygraphviz >1.0,!=1.8
+    test:
+      imports:
+        - metomi.rose
+        - metomi.rose.macro
+      commands:
+        - rose --version
+        - PAGER=cat rose macro --help
+        - PAGER=cat rosie graph --help
+        # test packaging of non-python files
+        - rose resource syntax/rose-conf.lang
 
 about:
   home: https://github.com/metomi/rose
