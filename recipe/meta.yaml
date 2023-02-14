@@ -1,5 +1,5 @@
 {% set name = "metomi-rose" %}
-{% set version = "2.0.2" %}
+{% set version = "2.0.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 3a570172fe264766794ef063a5e56c547bd680e8c1b99325a432366b86e8936a
+  sha256: c1657567cee9569d0b17f89a26fd3d981dcb4d0ae50e3136ca09cfb9aa1f2b05
 
 build:
   number: 0
