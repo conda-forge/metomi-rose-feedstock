@@ -1,11 +1,11 @@
-About metomi-rose
-=================
+About metomi-rose-feedstock
+===========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/metomi-rose-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/metomi/rose
 
 Package license: GPL-3.0-only
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/metomi-rose-feedstock/blob/main/LICENSE.txt)
 
 Summary: A toolkit for writing, editing and running application configurations.
 
