@@ -148,7 +148,6 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
-* [@datamel](https://github.com/datamel/)
 * [@metronnie](https://github.com/metronnie/)
 * [@oliver-sanders](https://github.com/oliver-sanders/)
 * [@wxtim](https://github.com/wxtim/)
