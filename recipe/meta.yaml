@@ -1,5 +1,5 @@
 {% set name = "metomi-rose" %}
-{% set version = "2.0.4" %}
+{% set version = "2.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 280aa050123af2af23584ec33aa691c2889b690478b9a5839b114dcd66d53985
+  sha256: 1b60135a434fe4325d364a57e8f5e81e90f39b373b9d68733458c1adc2513c05
 
 build:
   number: 0
@@ -38,6 +38,7 @@ outputs:
         - python >=3.7
         - aiofiles
         - jinja2 >=2.10.1
+        - keyring >=23,<24
         - ldap3
         - metomi-isodatetime >=1!3.0,<1!4.0
         - psutil >=5.6.0
