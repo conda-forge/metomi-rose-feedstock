@@ -18,6 +18,7 @@ requirements:
     - __unix
     - pip
     - python >=3.7
+    - setuptools
   run:
     - __unix
     - python >=3.7
@@ -33,6 +34,7 @@ outputs:
         - __unix
         - pip
         - python >=3.7
+        - setuptools
       run:
         - __unix
         - python >=3.7
@@ -68,6 +70,7 @@ outputs:
         - __unix
         - pip
         - python >=3.7
+        - setuptools
       run:
         - __unix
         - python >=3.7
