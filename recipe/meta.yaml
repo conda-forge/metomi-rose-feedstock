@@ -6,22 +6,22 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 5d2a1593a5bbe8362fbe5e197eaa0cde2574700c62181d9b5c1fafa1e67656cd
 
 build:
-  number: 0
+  number: 1
   noarch: python
 
 requirements:
   host:
     - __unix
     - pip
-    - python >=3.7
+    - python {{ python_min }}
     - setuptools
   run:
     - __unix
-    - python >=3.7
+    - python >={{ python_min }}
 
 outputs:
   # base package with only required dependencies
@@ -33,11 +33,11 @@ outputs:
       host:
         - __unix
         - pip
-        - python >=3.7
+        - python {{ python_min }}
         - setuptools
       run:
         - __unix
-        - python >=3.7
+        - python >={{ python_min }}
         - aiofiles
         - jinja2 >=2.10.1
         - keyring >=23,<24
@@ -50,6 +50,8 @@ outputs:
         - importlib_resources >=2.0  # py<3.9 TODO: selectors don't work for noarch packages
         # - tornado (rosie disco is temporally disabled)
     test:
+      requires:
+        - python {{ python_min }}
       imports:
         - metomi.rose
         - metomi.rose.macro
@@ -69,14 +71,16 @@ outputs:
       host:
         - __unix
         - pip
-        - python >=3.7
+        - python {{ python_min }}
         - setuptools
       run:
         - __unix
-        - python >=3.7
+        - python >={{ python_min }}
         - {{ pin_subpackage(name + "-base", exact=True) }}
         - pygraphviz >1.0,!=1.8
     test:
+      requires:
+        - python {{ python_min }}
       imports:
         - metomi.rose
         - metomi.rose.macro
