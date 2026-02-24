@@ -45,8 +45,6 @@ outputs:
         - metomi-isodatetime >=1!3.0,<1!4.0
         - psutil >=5.6.0
         - requests
-        - sqlalchemy >=1,<2
-        # - tornado (rosie disco is temporarily disabled)
     test:
       requires:
         - python {{ python_min }}
@@ -63,7 +61,7 @@ outputs:
   # For the next release we should spin `rosa` and `rosie disco` out of this
   - name: {{ name }}
     build:
-      script: python -m pip install .[graph] --no-deps --ignore-installed -vv
+      script: python -m pip install .[graph,edit] --no-deps --ignore-installed -vv
       noarch: python
     requirements:
       host:
@@ -76,12 +74,16 @@ outputs:
         - python >={{ python_min }}
         - {{ pin_subpackage(name + "-base", exact=True) }}
         - pygraphviz >1.0,!=1.8
+        - pygobject >=3.50.0
+        - gtk3 >=3.24.43
     test:
       requires:
         - python {{ python_min }}
       imports:
         - metomi.rose
         - metomi.rose.macro
+        - metomi.rose.config_editor
+        - metomi.rose.config_editor.main
       commands:
         - rose --version
         - PAGER=cat rose macro --help
@@ -97,6 +99,12 @@ about:
   summary: A toolkit for writing, editing and running application configurations.
   doc_url: http://metomi.github.io/rose
   dev_url: https://github.com/metomi/rose
+  description: |
+    There are two Rose packages:
+
+    * `metomi-rose`: The full installation, recommended for most uses.
+    * `metomi-rose-base`: A minimal package, recommended for installation on
+      job hosts where the full range of user-facing commands is not required.
 
 extra:
   recipe-maintainers:
