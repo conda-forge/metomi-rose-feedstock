@@ -13,6 +13,13 @@ Development: https://github.com/metomi/rose
 
 Documentation: http://metomi.github.io/rose
 
+There are two Rose packages:
+
+* `metomi-rose`: The full installation, recommended for most uses.
+* `metomi-rose-base`: A minimal package, recommended for installation on
+  job hosts where the full range of user-facing commands is not required.
+
+
 Current build status
 ====================
 
