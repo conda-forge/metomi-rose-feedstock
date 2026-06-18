@@ -24,10 +24,11 @@ Current build status
 ====================
 
 
-<table><tr><td>All platforms:</td>
+<table><tr>
+    <td>All platforms:</td>
     <td>
-      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12327&branchName=main">
-        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/metomi-rose-feedstock?branchName=main">
+      <a href="https://github.com/conda-forge/metomi-rose-feedstock/actions/workflows/conda-build.yml">
+        <img src="https://github.com/conda-forge/metomi-rose-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
       </a>
     </td>
   </tr>
@@ -155,7 +156,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@hjoliver](https://github.com/hjoliver/)
 * [@metronnie](https://github.com/metronnie/)
 * [@oliver-sanders](https://github.com/oliver-sanders/)
-* [@wxtim](https://github.com/wxtim/)
 
