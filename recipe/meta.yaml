@@ -21,8 +21,7 @@ requirements:
     - setuptools
   run:
     - __unix
-    # Python 3.15 support is currently broken.
-    - python >={{ python_min }},<3.15
+    - python >={{ python_min }}
 
 outputs:
   # base package with only required dependencies
