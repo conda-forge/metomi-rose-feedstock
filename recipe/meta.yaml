@@ -1,5 +1,5 @@
 {% set name = "metomi-rose" %}
-{% set version = "2.8.1" %}
+{% set version = "2.8.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 82b7d40d49e576657ecace75e7d437def81a96e05747d683b6b7b4af52180578
+  sha256: 3f2d0c765fe46243f07253eff7ecd8642503585e16ca7da59e867901d9a6ebf6
 
 build:
-  number: 1
+  number: 0
   noarch: python
 
 requirements:
@@ -21,8 +21,7 @@ requirements:
     - setuptools
   run:
     - __unix
-    # Python 3.15 support is currently broken.
-    - python >={{ python_min }},<3.15
+    - python >={{ python_min }}
 
 outputs:
   # base package with only required dependencies
